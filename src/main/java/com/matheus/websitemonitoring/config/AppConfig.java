@@ -11,6 +11,7 @@ import java.time.Duration;
 @Configuration
 public class AppConfig {
 
+    @SuppressWarnings("deprecation")
     @Bean
     public RestTemplate restTemplate(
             RestTemplateBuilder builder,
