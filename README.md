@@ -13,12 +13,25 @@ API REST para monitoramento de disponibilidade de websites, com execução autom
 
 ---
 
-## 🚀 Tecnologias utilizadas
+## 📌 Sobre o projeto
+
+Este projeto foi desenvolvido com o objetivo de monitorar a disponibilidade de websites de forma automatizada, registrando histórico de verificações e permitindo consultas via API REST.
+
+Ideal para estudos de backend com foco em:
+- arquitetura limpa
+- boas práticas com Spring Boot
+- testes automatizados
+- integração com banco de dados
+
+---
+
+## 🛠️ Tecnologias utilizadas
 
 - Java 21
 - Spring Boot 3
 - Spring Data JPA
-- H2 (dev) / PostgreSQL (prod)
+- H2 (desenvolvimento)
+- PostgreSQL (produção)
 - Maven
 - Lombok
 - Swagger (OpenAPI)
@@ -26,13 +39,14 @@ API REST para monitoramento de disponibilidade de websites, com execução autom
 
 ---
 
-## 📌 Funcionalidades
+## ⚙️ Funcionalidades
 
-- Cadastro de websites para monitoramento
-- Execução manual de verificação
+- Cadastro de websites
+- Ativação/desativação de monitoramento
+- Verificação manual de status
 - Monitoramento automático via scheduler
-- Registro de histórico de verificações
-- Consulta de status atual do site
+- Histórico de verificações
+- Consulta de status atual
 - Documentação interativa com Swagger
 - Testes automatizados
 
@@ -40,54 +54,103 @@ API REST para monitoramento de disponibilidade de websites, com execução autom
 
 ## 🏗️ Arquitetura
 
+```
 controller → service → repository → database
+```
 
 ---
 
 ## 📡 Endpoints principais
 
-POST /websites  
-GET /websites  
-POST /monitoring/{websiteId}/check  
-GET /monitoring/{websiteId}/records  
-GET /monitoring/{websiteId}/status  
+- POST `/websites`
+- GET `/websites`
+- POST `/monitoring/{websiteId}/check`
+- GET `/monitoring/{websiteId}/records`
+- GET `/monitoring/{websiteId}/status`
 
 ---
 
 ## 📖 Swagger
 
+Acesse:
+
 http://localhost:8080/swagger-ui/index.html
 
 ---
 
-## ⚙️ Como rodar
+## 🚀 Como rodar o projeto
 
-git clone https://github.com/mathhsilva/websitemonitoring.git  
-cd websitemonitoring  
-mvnw.cmd spring-boot:run  
-
----
-
-## 🧪 Testes
-
-mvnw.cmd test  
+```bash
+git clone https://github.com/mathhsilva/website-monitoring-api.git
+cd website-monitoring-api
+mvnw.cmd spring-boot:run
+```
 
 ---
 
-## 🗄️ Banco
+## 🧪 Rodar os testes
 
-Dev: H2  
-Prod: PostgreSQL  
+```bash
+mvnw.cmd test
+```
+
+---
+
+## 🗄️ Banco de dados
+
+### Desenvolvimento
+- H2 (em memória)
+
+### Produção
+- PostgreSQL
+
+Configuração via variáveis de ambiente:
+
+```
+SPRING_DATASOURCE_URL=
+SPRING_DATASOURCE_USERNAME=
+SPRING_DATASOURCE_PASSWORD=
+```
 
 ---
 
 ## ⏱️ Scheduler
 
+Configuração do monitoramento automático:
+
+```
 monitoring.scheduler.fixed-rate=15s
+```
+
+---
+
+## 🔧 Configuração importante
+
+Para compatibilidade com Swagger:
+
+```
+spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+```
+
+---
+
+## 📈 Melhorias futuras
+
+- Autenticação com JWT
+- Notificações (email/webhook)
+- Dashboard com gráficos
+- Dockerização
+- CI/CD
+- Monitoramento com Prometheus/Grafana
 
 ---
 
 ## 👨‍💻 Autor
 
 Matheus Cordeiro
-#   w e b s i t e - m o n i t o r i n g - a p i 
+
+---
+
+## 📢 Observação
+
+Projeto desenvolvido para portfólio com foco em backend Java, boas práticas e arquitetura limpa.
