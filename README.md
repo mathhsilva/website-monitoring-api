@@ -9,19 +9,41 @@ API REST para monitoramento de disponibilidade de websites, com execução autom
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+![Deploy](https://img.shields.io/badge/deploy-online-success)
 
 ---
 
 ## 📌 Sobre o projeto
 
-Este projeto foi desenvolvido com o objetivo de monitorar a disponibilidade de websites de forma automatizada, registrando histórico de verificações e permitindo consultas via API REST.
+Este projeto foi desenvolvido para monitorar a disponibilidade de websites através de uma API REST.
 
-Ideal para estudos de backend com foco em:
-- arquitetura limpa
+Possui:
+- verificações manuais
+- execução automática via scheduler
+- armazenamento de histórico no banco de dados
+
+Projeto voltado para portfólio backend, demonstrando:
 - boas práticas com Spring Boot
-- testes automatizados
+- arquitetura em camadas
 - integração com banco de dados
+- testes automatizados
+- deploy em produção
+
+---
+
+## 🌍 Aplicação em produção
+
+🔗 API:
+https://websitemonitoring.hinnovation.com.br
+
+📄 Swagger:
+https://websitemonitoring.hinnovation.com.br/swagger-ui/index.html
+
+❤️ Healthcheck:
+https://websitemonitoring.hinnovation.com.br/actuator/health
+
+📦 Repositório:
+https://github.com/mathhsilva/website-monitoring-api
 
 ---
 
@@ -34,51 +56,46 @@ Ideal para estudos de backend com foco em:
 - PostgreSQL (produção)
 - Maven
 - Lombok
-- Swagger (OpenAPI)
+- Swagger / OpenAPI
 - JUnit + Spring Boot Test
+- Docker
+- Coolify
 
 ---
 
 ## ⚙️ Funcionalidades
 
 - Cadastro de websites
-- Ativação/desativação de monitoramento
+- Ativação e desativação de monitoramento
 - Verificação manual de status
-- Monitoramento automático via scheduler
-- Histórico de verificações
+- Monitoramento automático (scheduler)
+- Histórico de monitoramento
 - Consulta de status atual
-- Documentação interativa com Swagger
+- Documentação Swagger
 - Testes automatizados
+- Deploy em produção
 
 ---
 
 ## 🏗️ Arquitetura
 
-```
-controller → service → repository → database
-```
+controller -> service -> repository -> database
 
 ---
 
 ## 📡 Endpoints principais
 
-- POST `/websites`
-- GET `/websites`
-- POST `/monitoring/{websiteId}/check`
-- GET `/monitoring/{websiteId}/records`
-- GET `/monitoring/{websiteId}/status`
+- POST `/api/websites`
+- GET `/api/websites`
+- GET `/api/websites/{id}`                                                          
+- PATCH `/api/websites/{id}/active`
+- POST `/api/websites/{websiteId}/check`
+- GET `/api/websites/{websiteId}/records`
+- GET `/api/websites/{websiteId}/status`
 
 ---
 
-## 📖 Swagger
-
-Acesse:
-
-http://localhost:8080/swagger-ui/index.html
-
----
-
-## 🚀 Como rodar o projeto
+## 🚀 Como rodar localmente
 
 ```bash
 git clone https://github.com/mathhsilva/website-monitoring-api.git
@@ -88,7 +105,7 @@ mvnw.cmd spring-boot:run
 
 ---
 
-## 🧪 Rodar os testes
+## 🧪 Executar testes
 
 ```bash
 mvnw.cmd test
@@ -99,47 +116,33 @@ mvnw.cmd test
 ## 🗄️ Banco de dados
 
 ### Desenvolvimento
-- H2 (em memória)
+- H2 em memória
 
 ### Produção
 - PostgreSQL
 
-Configuração via variáveis de ambiente:
+Variáveis de ambiente:
 
-```
-SPRING_DATASOURCE_URL=
-SPRING_DATASOURCE_USERNAME=
-SPRING_DATASOURCE_PASSWORD=
-```
+SPRING_PROFILES_ACTIVE=prod  
+SPRING_DATASOURCE_URL=  
+SPRING_DATASOURCE_USERNAME=  
+SPRING_DATASOURCE_PASSWORD=  
 
 ---
 
 ## ⏱️ Scheduler
 
-Configuração do monitoramento automático:
+Intervalo de monitoramento configurável:
 
-```
 monitoring.scheduler.fixed-rate=15s
-```
-
----
-
-## 🔧 Configuração importante
-
-Para compatibilidade com Swagger:
-
-```
-spring.mvc.pathmatch.matching-strategy=ant-path-matcher
-```
 
 ---
 
 ## 📈 Melhorias futuras
 
-- Autenticação com JWT
-- Notificações (email/webhook)
+- Autenticação JWT
+- Notificações (email ou webhook)
 - Dashboard com gráficos
-- Dockerização
 - CI/CD
 - Monitoramento com Prometheus/Grafana
 
@@ -153,4 +156,4 @@ Matheus Cordeiro
 
 ## 📢 Observação
 
-Projeto desenvolvido para portfólio com foco em backend Java, boas práticas e arquitetura limpa.
+Projeto desenvolvido como portfólio backend para demonstrar construção de APIs REST, uso de scheduler, testes automatizados, documentação com Swagger e deploy em produção.
